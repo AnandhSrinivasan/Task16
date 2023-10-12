@@ -20,11 +20,15 @@ public class Q3_Chrome_Wikipedia {
 		searchbox.sendKeys("Artificial Intelligence");
 		
 		WebElement searchclick =  driver.findElement(By.xpath("//*[text()='Search']"));
-		searchclick.click();
-
-		//Absolute Xpath Used
-		WebElement Title = driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/nav[1]/div[1]/div[1]/ul[1]/li[6]/a[1]/div[1]"));
-		Title.click(); 
+		searchclick.submit();
+		try {
+            Thread.sleep(2000); // Adjust the wait time as needed
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+		
+		WebElement Title = driver.findElement(By.partialLinkText("History"));
+		Title.click();
 		String pagetitle =driver.findElement(By.id("History")).getText();
 		System.out.println("Selected section Title is : " +pagetitle);
 	}
